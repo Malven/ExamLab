@@ -1,0 +1,47 @@
+@model IEnumerable<WebApp.Models.Hobby>
+
+@{
+    ViewData["Title"] = "Hobbies";
+}
+
+<h2>Hobbies</h2>
+
+<p>
+    <a asp-action="Create">Add a new Hobby</a>
+</p>
+<form asp-controller="Hobbies" asp-action="Index">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">
+                Search: <input type="text" name="searchString" />
+                <input type="submit" value="Search" />
+            </div>
+        </div>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description )
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title )
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description )
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+        </td>
+    </tr>
+}
+</table>
