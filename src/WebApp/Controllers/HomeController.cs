@@ -18,11 +18,9 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            HobbyFactory hobbyFactory = new HobbyFactory();
-
             var hobbies = from h in _context.Hobby select h;
             
-            IQueryable<Hobby> hobbyToShow = hobbyFactory.GetHobbyStrategy().GetHobby( hobbies );
+            IQueryable<Hobby> hobbyToShow = HobbyFactory.GetHobbyStrategy().GetHobby( hobbies );
 
             return View(hobbyToShow);
         }

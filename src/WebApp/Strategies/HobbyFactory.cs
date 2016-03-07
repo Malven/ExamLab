@@ -15,7 +15,7 @@ namespace WebApp.Strategies
             strategy = _strategy;
         }
 
-        public IHobbyStrategy GetHobbyStrategy() {
+        public static IHobbyStrategy GetHobbyStrategy() {
             if(DateTime.Now.DayOfWeek == DayOfWeek.Monday ) {
                 HobbyDay hobbyDay = new HobbyDay();
                 return hobbyDay;
